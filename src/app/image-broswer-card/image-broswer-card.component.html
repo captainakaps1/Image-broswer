@@ -16,8 +16,8 @@
     (mouseenter)="slideShow = false"
     (mouseleave)="slideShow = true"
     (click)="showActionBar = !showActionBar"
-    (swipeleft)="updateImageDislike(); $event.stopPropagation()"
-    (swiperight)="updateImageLike(); $event.stopPropagation()"
+    (swipeleft)="updateImageDislike()"
+    (swiperight)="updateImageLike()"
   >
     <div class="p-3 w-full flex mb-72 items-center justify-between absolute">
       <button
@@ -47,6 +47,12 @@
           *ngIf="currentImageDisplayed.numSuperLikes > 0"
           >{{ currentImageDisplayed.numSuperLikes }}
           <i class="fa-solid fa-star text-yellow-500"></i
+        ></span>
+        <span
+          class="text-base text-gray-300"
+          *ngIf="currentImageDisplayed.numDislikes > 0"
+          >{{ currentImageDisplayed.numDislikes }}
+          <i class="fa-solid fa-thumbs-down text-blue-500"></i
         ></span>
       </h3>
       <p class="text-gray-300 text-lg normal-case">
