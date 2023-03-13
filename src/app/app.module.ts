@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImageBroswerCardComponent } from './image-broswer-card/image-broswer-card.component';
-import { ImagesService } from './image.service';
+import { UserProfileService } from './userProfile.service';
 import * as Hammer from 'hammerjs';
 import {
   HammerGestureConfig,
@@ -22,7 +22,7 @@ export class MyHammerConfig extends HammerGestureConfig {
   declarations: [AppComponent, ImageBroswerCardComponent],
   imports: [BrowserModule, AppRoutingModule, HammerModule],
   providers: [
-    ImagesService,
+    UserProfileService,
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,

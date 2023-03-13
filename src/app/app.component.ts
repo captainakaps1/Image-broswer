@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ImagesService } from './image.service';
-import { Image } from './interfaces/image.interface';
+import { UserProfileService } from './userProfile.service';
+import { UserProfile } from './interfaces/image.interface';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,11 @@ import { Image } from './interfaces/image.interface';
 })
 export class AppComponent implements OnInit {
   title = 'image-browser';
-  images: Image[] = [];
+  userProfiles: UserProfile[] = [];
 
-  constructor(private imageService: ImagesService) {}
+  constructor(private userProfileService: UserProfileService) {}
 
   ngOnInit() {
-    this.images = this.imageService.getImages();
+    this.userProfiles = this.userProfileService.getUserProfiles();
   }
 }

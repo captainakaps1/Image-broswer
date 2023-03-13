@@ -1,67 +1,60 @@
 <div class="w-full h-full rounded-xl shadow-md relative overflow-auto">
-  <img
-    class="rounded-xl object-fill h-full w-full"
-    (click)="showActionBar = true"
-    src="{{
-      currentImageDisplayed
-        ? currentImageDisplayed.imageUrl
-        : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFm8eXQHeAtAFkY2WBztX3RFB5ONe0RAT7g&usqp=CAU'
-    }}"
-    alt="lady"
-  />
+  <div class="w-full h-full transition-transform ease-out duration-500">
+    <img
+      #imageRef
+      class="rounded-xl object-fill h-full w-full carousel slide-in overflow-hidden"
+      (click)="showActionBar = true"
+      src="{{
+        currentUserImagesDisplay
+          ? currentUserImagesDisplay.imageUrl
+          : noImgToDisplay
+      }}"
+      alt="lady"
+    />
+  </div>
 
   <div
-    class="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-black/40 to-transparent rounded-xl text-white"
-    *ngIf="currentImageDisplayed"
+    class="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-black/80 to-transparent rounded-xl text-white"
+    *ngIf="currentUserProfileDisplayed"
     (mouseenter)="slideShow = false"
     (mouseleave)="slideShow = true"
-    (click)="showActionBar = !showActionBar"
-    (swipeleft)="updateImageDislike()"
-    (swiperight)="updateImageLike()"
+    (swipeleft)="updateUserProfileDislike()"
+    (swiperight)="updateUserProfileLike()"
   >
-    <div class="p-3 w-full flex mb-72 items-center justify-between absolute">
-      <button
-        class="rounded-full px-4 py-2 hover:bg-gray-400 hover:bg-opacity-40 text-gray-300 transform active:scale-75 transition-transform"
-        (click)="previousImage(); $event.stopPropagation()"
-      >
-        <i class="fa-solid fa-chevron-left text-2xl"></i>
-      </button>
-      <button
-        class="rounded-full px-4 py-2 hover:bg-gray-400 hover:bg-opacity-40 text-gray-300 transform active:scale-75 transition-transform"
-        (click)="nextImage(); $event.stopPropagation()"
-      >
-        <i class="fa-solid fa-chevron-right text-2xl"></i>
-      </button>
+    <div class="w-full h-full flex items-center justify-between absolute">
+      <div class="w-1/4 h-full" (tap)="previousImage()"></div>
+      <div class="p-2 grow h-full" (tap)="showActionBar = !showActionBar"></div>
+      <div class="w-1/4 h-full" (tap)="nextImage()"></div>
     </div>
     <div class="mb-3 p-4 space-y-2 capitalize">
       <h3 class="text-xl font-semibold flex items-center space-x-2">
-        <span>{{ currentImageDisplayed.name }}</span>
+        <span>{{ currentUserProfileDisplayed.name }}</span>
         <span
           class="text-base text-gray-300"
-          *ngIf="currentImageDisplayed.numLikes > 0"
-          >{{ currentImageDisplayed.numLikes }}
+          *ngIf="currentUserProfileDisplayed.numLikes > 0"
+          >{{ currentUserProfileDisplayed.numLikes }}
           <i class="fa-solid fa-heart text-red-500"></i
         ></span>
         <span
           class="text-base text-gray-300"
-          *ngIf="currentImageDisplayed.numSuperLikes > 0"
-          >{{ currentImageDisplayed.numSuperLikes }}
+          *ngIf="currentUserProfileDisplayed.numSuperLikes > 0"
+          >{{ currentUserProfileDisplayed.numSuperLikes }}
           <i class="fa-solid fa-star text-yellow-500"></i
         ></span>
         <span
           class="text-base text-gray-300"
-          *ngIf="currentImageDisplayed.numDislikes > 0"
-          >{{ currentImageDisplayed.numDislikes }}
+          *ngIf="currentUserProfileDisplayed.numDislikes > 0"
+          >{{ currentUserProfileDisplayed.numDislikes }}
           <i class="fa-solid fa-thumbs-down text-blue-500"></i
         ></span>
       </h3>
       <p class="text-gray-300 text-lg normal-case">
         <i class="fa-solid fa-briefcase"></i>
-        {{ currentImageDisplayed.description }}
+        {{ currentUserProfileDisplayed.profession }}
       </p>
       <p class="text-gray-300 text-lg">
         <i class="fa-solid fa-location-dot"></i>
-        {{ currentImageDisplayed.location }}
+        {{ currentUserProfileDisplayed.location }}
       </p>
     </div>
 
@@ -71,19 +64,19 @@
     >
       <button
         class="rounded-xl px-3 py-2 bg-gray-100 text-red-500 hover:bg-red-500 hover:text-red-100 focus:bg-red-500 focus:text-red-100 transform active:scale-75 transition-transform"
-        (click)="updateImageLike(); $event.stopPropagation()"
+        (click)="updateUserProfileLike(); $event.stopPropagation()"
       >
         <i class="fa-solid fa-heart text-2xl"></i>
       </button>
       <button
         class="rounded-xl px-3 py-2 bg-gray-100 text-yellow-500 hover:bg-yellow-500 hover:text-yellow-100 focus:bg-yellow-500 focus:text-yellow-100 transform active:scale-75 transition-transform"
-        (click)="updateImageSuperLike(); $event.stopPropagation()"
+        (click)="updateUserProfileSuperLike(); $event.stopPropagation()"
       >
         <i class="fa-solid fa-star text-2xl"></i>
       </button>
       <button
         class="rounded-xl px-3 py-2 bg-gray-100 text-blue-500 hover:bg-blue-500 hover:text-blue-100 focus:bg-blue-500 focus:text-blue-100 transform active:scale-75 transition-transform"
-        (click)="updateImageDislike(); $event.stopPropagation()"
+        (click)="updateUserProfileDislike(); $event.stopPropagation()"
       >
         <i class="fa-solid fa-thumbs-down text-2xl"></i>
       </button>
