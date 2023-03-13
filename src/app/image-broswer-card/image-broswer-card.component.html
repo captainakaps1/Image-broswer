@@ -1,9 +1,7 @@
 <div class="w-full h-full rounded-xl shadow-md relative overflow-auto">
   <div class="w-full h-full transition-transform ease-out duration-500">
     <img
-      #imageRef
-      class="rounded-xl object-fill h-full w-full carousel slide-in overflow-hidden"
-      (click)="showActionBar = true"
+      class="rounded-xl object-fill h-full w-full slide-in"
       src="{{
         currentUserImagesDisplay
           ? currentUserImagesDisplay.imageUrl
@@ -25,6 +23,29 @@
       <div class="w-1/4 h-full" (tap)="previousImage()"></div>
       <div class="p-2 grow h-full" (tap)="showActionBar = !showActionBar"></div>
       <div class="w-1/4 h-full" (tap)="nextImage()"></div>
+    </div>
+    <div
+      class="w-full h-full flex items-center justify-center absolute"
+      *ngIf="like || superLike || dislike"
+    >
+      <img
+        class="rounded-xl object-fill h-30 w-30"
+        src="assets/images/like.gif"
+        alt="like"
+        *ngIf="like"
+      />
+      <img
+        class="rounded-xl object-fill h-30 w-30"
+        src="assets/images/star.gif"
+        alt="superLike"
+        *ngIf="superLike"
+      />
+      <img
+        class="rounded-xl object-fill h-30 w-30"
+        src="assets/images/dislike.gif"
+        alt="lady"
+        *ngIf="dislike"
+      />
     </div>
     <div class="mb-3 p-4 space-y-2 capitalize">
       <h3 class="text-xl font-semibold flex items-center space-x-2">

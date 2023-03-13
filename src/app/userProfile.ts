@@ -45,12 +45,6 @@ export const userProfiles: UserProfile[] = [
       {
         id: 6,
         imageUrl:
-          'https://images.unsplash.com/photo-1677397259005-174a2a24f46a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mjh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-        name: '',
-      },
-      {
-        id: 7,
-        imageUrl:
           'https://images.unsplash.com/photo-1676824670367-245ffd22ad21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
         name: '',
       },

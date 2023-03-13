@@ -21,6 +21,9 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
   currentUserImagesDisplay: any;
   showActionBar = false;
   slideShow = true;
+  like = false;
+  dislike = false;
+  superLike = false;
   interval: any;
   noImgToDisplay =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFm8eXQHeAtAFkY2WBztX3RFB5ONe0RAT7g&usqp=CAU';
@@ -57,23 +60,6 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
     this.currentUserImagesDisplay =
       this.currentUserProfileDisplayed.images[currentIndex];
 
-    const imageElements = document.querySelectorAll<HTMLElement>('.carousel');
-    imageElements.forEach((imageElement: HTMLElement, index: number) => {
-      if (index === currentIndex) {
-        imageElement.classList.add('active');
-      } else {
-        imageElement.classList.remove('active');
-      }
-    });
-
-    if (this.imageRefs[currentIndex]) {
-      this.imageRefs[currentIndex].nativeElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-      });
-    }
-
     this.showActionBar = false;
   }
 
@@ -104,20 +90,33 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
   }
 
   updateUserProfileLike() {
+    this.like = true;
     this.currentUserProfileDisplayed.numLikes =
       this.currentUserProfileDisplayed.numLikes + 1;
-    this.changeUserProfile();
+    setTimeout(() => {
+      this.like = false;
+      this.changeUserProfile();
+    }, 500);
   }
+
   updateUserProfileSuperLike() {
+    this.superLike = true;
     this.currentUserProfileDisplayed.numSuperLikes =
       this.currentUserProfileDisplayed.numSuperLikes + 1;
-    this.changeUserProfile();
+    setTimeout(() => {
+      this.superLike = false;
+      this.changeUserProfile();
+    }, 500);
   }
 
   updateUserProfileDislike() {
+    this.dislike = true;
     this.currentUserProfileDisplayed.numDislikes =
       this.currentUserProfileDisplayed.numDislikes + 1;
-    this.changeUserProfile();
+    setTimeout(() => {
+      this.dislike = false;
+      this.changeUserProfile();
+    }, 500);
   }
 
   ngOnDestroy(): void {
