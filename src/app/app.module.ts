@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +21,12 @@ export class MyHammerConfig extends HammerGestureConfig {
 }
 @NgModule({
   declarations: [AppComponent, ImageBroswerCardComponent],
-  imports: [BrowserModule, AppRoutingModule, HammerModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HammerModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     UserProfileService,
     {

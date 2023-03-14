@@ -1,3 +1,4 @@
+import { transition, trigger, useAnimation } from '@angular/animations';
 import {
   Component,
   ElementRef,
@@ -6,15 +7,27 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Image, UserProfile } from '../interfaces/image.interface';
+import { UserProfile } from '../interfaces/image.interface';
+import { AnimationType, scaleIn, scaleOut } from './image-broswer-animation';
 
 @Component({
   selector: 'app-image-broswer-card',
   templateUrl: './image-broswer-card.component.html',
   styleUrls: ['./image-broswer-card.component.css'],
+  animations: [
+    trigger('slideAnimation', [
+      transition('void => scale', [
+        useAnimation(scaleIn, { params: { time: '500ms' } }),
+      ]),
+      transition('scale => void', [
+        useAnimation(scaleOut, { params: { time: '500ms' } }),
+      ]),
+    ]),
+  ],
 })
 export class ImageBroswerCardComponent implements OnInit, OnDestroy {
   @Input() userProfile: UserProfile[] = [];
+  animationType = AnimationType.Scale;
   currentUserProfileIndex: number = 0;
   currentUserImageIndex: number = 0;
   currentUserProfileDisplayed: any;
@@ -35,7 +48,6 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentUserProfileDisplayed = this.userProfile[0];
-    this.currentUserImagesDisplay = this.currentUserProfileDisplayed.images[0];
     this.slideShowImages();
   }
 
@@ -57,9 +69,6 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
       this.currentUserImageIndex = 0;
     }
 
-    this.currentUserImagesDisplay =
-      this.currentUserProfileDisplayed.images[currentIndex];
-
     this.showActionBar = false;
   }
 
@@ -74,8 +83,6 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
     this.currentUserImageIndex = 0;
     this.currentUserProfileDisplayed =
       this.userProfile[this.currentUserProfileIndex];
-    this.currentUserImagesDisplay =
-      this.currentUserProfileDisplayed.images[this.currentUserImageIndex];
     this.showActionBar = false;
   }
 

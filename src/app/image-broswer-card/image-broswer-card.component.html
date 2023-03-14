@@ -1,16 +1,24 @@
 <div class="w-full h-full rounded-xl shadow-md relative overflow-auto">
-  <div class="w-full h-full transition-transform ease-out duration-500">
+  <ng-container
+    *ngFor="let image of currentUserProfileDisplayed.images; let i = index"
+  >
     <img
       class="rounded-xl object-fill h-full w-full slide-in"
-      src="{{
-        currentUserImagesDisplay
-          ? currentUserImagesDisplay.imageUrl
-          : noImgToDisplay
-      }}"
+      *ngIf="i === currentUserImageIndex"
+      src="{{ image.imageUrl }}"
       alt="lady"
+      [@slideAnimation]="animationType"
     />
-  </div>
+  </ng-container>
 
+  <ng-container *ngIf="currentUserProfileDisplayed.images.length == 0">
+    <img
+      class="rounded-xl object-fill h-full w-full slide-in"
+      src="{{ noImgToDisplay }}"
+      alt="lady"
+      [@slideAnimation]="animationType"
+    />
+  </ng-container>
   <div
     class="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-black/80 to-transparent rounded-xl text-white"
     *ngIf="currentUserProfileDisplayed"
@@ -47,9 +55,18 @@
         *ngIf="dislike"
       />
     </div>
-    <div class="mb-3 p-4 space-y-2 capitalize">
-      <h3 class="text-xl font-semibold flex items-center space-x-2">
-        <span>{{ currentUserProfileDisplayed.name }}</span>
+    <div class="mb-3 p-3 space-y-2 w-full capitalize">
+      <h3 class="flex items-center space-x-2">
+        <span class="w-10 h-10 bg-black rounded-full">
+          <img
+            class="rounded-full object-cover h-full w-full"
+            src="{{ currentUserProfileDisplayed.avatar }}"
+            alt="{{ currentUserProfileDisplayed.name }}"
+          />
+        </span>
+        <span class="text-xl font-semibold">{{
+          currentUserProfileDisplayed.name
+        }}</span>
         <span
           class="text-base text-gray-300"
           *ngIf="currentUserProfileDisplayed.numLikes > 0"
@@ -79,28 +96,27 @@
       </p>
     </div>
 
-    <div
-      class="mb-2 p-4 w-full flex items-center justify-center space-x-10"
-      *ngIf="showActionBar"
-    >
-      <button
-        class="rounded-xl px-3 py-2 bg-gray-100 text-red-500 hover:bg-red-500 hover:text-red-100 focus:bg-red-500 focus:text-red-100 transform active:scale-75 transition-transform"
-        (click)="updateUserProfileLike(); $event.stopPropagation()"
-      >
-        <i class="fa-solid fa-heart text-2xl"></i>
-      </button>
-      <button
-        class="rounded-xl px-3 py-2 bg-gray-100 text-yellow-500 hover:bg-yellow-500 hover:text-yellow-100 focus:bg-yellow-500 focus:text-yellow-100 transform active:scale-75 transition-transform"
-        (click)="updateUserProfileSuperLike(); $event.stopPropagation()"
-      >
-        <i class="fa-solid fa-star text-2xl"></i>
-      </button>
-      <button
-        class="rounded-xl px-3 py-2 bg-gray-100 text-blue-500 hover:bg-blue-500 hover:text-blue-100 focus:bg-blue-500 focus:text-blue-100 transform active:scale-75 transition-transform"
-        (click)="updateUserProfileDislike(); $event.stopPropagation()"
-      >
-        <i class="fa-solid fa-thumbs-down text-2xl"></i>
-      </button>
-    </div>
+    <ng-container *ngIf="showActionBar">
+      <div class="mb-2 p-4 w-full flex items-center justify-center space-x-10">
+        <button
+          class="rounded-xl px-3 py-2 bg-gray-100 text-red-500 hover:bg-red-500 hover:text-red-100 focus:bg-red-500 focus:text-red-100 transform active:scale-75 transition-transform"
+          (click)="updateUserProfileLike(); $event.stopPropagation()"
+        >
+          <i class="fa-solid fa-heart text-2xl"></i>
+        </button>
+        <button
+          class="rounded-xl px-3 py-2 bg-gray-100 text-yellow-500 hover:bg-yellow-500 hover:text-yellow-100 focus:bg-yellow-500 focus:text-yellow-100 transform active:scale-75 transition-transform"
+          (click)="updateUserProfileSuperLike(); $event.stopPropagation()"
+        >
+          <i class="fa-solid fa-star text-2xl"></i>
+        </button>
+        <button
+          class="rounded-xl px-3 py-2 bg-gray-100 text-blue-500 hover:bg-blue-500 hover:text-blue-100 focus:bg-blue-500 focus:text-blue-100 transform active:scale-75 transition-transform"
+          (click)="updateUserProfileDislike(); $event.stopPropagation()"
+        >
+          <i class="fa-solid fa-thumbs-down text-2xl"></i>
+        </button>
+      </div>
+    </ng-container>
   </div>
 </div>
