@@ -14,20 +14,20 @@ import { AnimationType, scaleIn, scaleOut } from './image-broswer-animation';
   selector: 'app-image-broswer-card',
   templateUrl: './image-broswer-card.component.html',
   styleUrls: ['./image-broswer-card.component.css'],
-  animations: [
-    trigger('slideAnimation', [
-      transition('void => scale', [
-        useAnimation(scaleIn, { params: { time: '500ms' } }),
-      ]),
-      transition('scale => void', [
-        useAnimation(scaleOut, { params: { time: '500ms' } }),
-      ]),
-    ]),
-  ],
+  // animations: [
+  //   trigger('slideAnimation', [
+  //     transition('void => scale', [
+  //       useAnimation(scaleIn, { params: { time: '500ms' } }),
+  //     ]),
+  //     transition('scale => void', [
+  //       useAnimation(scaleOut, { params: { time: '500ms' } }),
+  //     ]),
+  //   ]),
+  // ],
 })
 export class ImageBroswerCardComponent implements OnInit, OnDestroy {
   @Input() userProfile: UserProfile[] = [];
-  animationType = AnimationType.Scale;
+  // animationType = AnimationType.Scale;
   currentUserProfileIndex: number = 0;
   currentUserImageIndex: number = 0;
   currentUserProfileDisplayed: any;
@@ -40,9 +40,6 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
   interval: any;
   noImgToDisplay =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFm8eXQHeAtAFkY2WBztX3RFB5ONe0RAT7g&usqp=CAU';
-
-  imageRefs: ElementRef[] = [];
-  @ViewChild('imageRef') imageRef: ElementRef | undefined;
 
   constructor() {}
 
@@ -86,14 +83,19 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
     this.showActionBar = false;
   }
 
-  nextImage() {
-    this.currentUserImageIndex++;
-    this.changeImage(this.currentUserImageIndex);
+  previousImage() {
+    this.currentUserImageIndex =
+      this.currentUserImageIndex === 0
+        ? this.currentUserProfileDisplayed.images.length - 1
+        : this.currentUserImageIndex - 1;
   }
 
-  previousImage() {
-    this.currentUserImageIndex--;
-    this.changeImage(this.currentUserImageIndex);
+  nextImage() {
+    this.currentUserImageIndex =
+      this.currentUserImageIndex ===
+      this.currentUserProfileDisplayed.images.length - 1
+        ? 0
+        : this.currentUserImageIndex + 1;
   }
 
   updateUserProfileLike() {

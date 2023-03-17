@@ -1,119 +1,88 @@
 <div class="w-full h-full rounded-xl shadow-md relative overflow-hidden">
-  <ng-container
-    *ngFor="let image of currentUserProfileDisplayed.images; let i = index"
-  >
-    <img
-      class="rounded-xl object-fill h-full w-full slide-in"
-      *ngIf="i === currentUserImageIndex"
-      src="{{ image.imageUrl }}"
-      alt="lady"
-      [@slideAnimation]="animationType"
-    />
+  <ng-container *ngFor="let image of currentUserProfileDisplayed.images; let i = index">
+    <img class="rounded-xl object-cover h-full w-full" *ngIf="i === currentUserImageIndex" src="{{ image.imageUrl }}"
+      alt="lady" />
   </ng-container>
 
+  <div class="absolute top-2 right-0 left-0">
+    <div class="flex items-center justify-between w-full px-3 gap-2">
+      <div class="w-full p-0.5 bg-white rounded-xl {{
+          currentUserImageIndex === i ? 'bg-white' : 'bg-opacity-50'
+        }}" *ngFor="let image of currentUserProfileDisplayed.images; let i = index"></div>
+    </div>
+  </div>
+
   <ng-container *ngIf="currentUserProfileDisplayed.images.length == 0">
-    <img
-      class="rounded-xl object-fill h-full w-full slide-in"
-      src="{{ noImgToDisplay }}"
-      alt="lady"
-      [@slideAnimation]="animationType"
-    />
+    <img class="rounded-xl object-fill h-full w-full" src="{{ noImgToDisplay }}" alt="lady" />
   </ng-container>
   <div
-    class="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-black/80 to-transparent rounded-xl text-white"
-    *ngIf="currentUserProfileDisplayed"
-    (mouseenter)="slideShow = false"
-    (mouseleave)="slideShow = true"
-    (swipeleft)="updateUserProfileDislike()"
-    (swiperight)="updateUserProfileLike()"
-  >
+    class="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-black/50 to-transparent rounded-xl text-white"
+    *ngIf="currentUserProfileDisplayed" (mouseenter)="slideShow = false" (mouseleave)="slideShow = true"
+    (swipeleft)="updateUserProfileDislike()" (swiperight)="updateUserProfileLike()">
     <div class="w-full h-full flex items-center justify-between absolute">
       <div class="w-1/4 h-full" (tap)="previousImage()"></div>
       <div class="p-2 grow h-full" (tap)="showActionBar = !showActionBar"></div>
       <div class="w-1/4 h-full" (tap)="nextImage()"></div>
     </div>
-    <div
-      class="w-full h-full flex items-center justify-center absolute"
-      *ngIf="like || superLike || dislike"
-    >
-      <img
-        class="rounded-xl object-fill h-30 w-30"
-        src="assets/images/like.gif"
-        alt="like"
-        *ngIf="like"
-      />
-      <img
-        class="rounded-xl object-fill h-30 w-30"
-        src="assets/images/star.gif"
-        alt="superLike"
-        *ngIf="superLike"
-      />
-      <img
-        class="rounded-xl object-fill h-30 w-30"
-        src="assets/images/dislike.gif"
-        alt="lady"
-        *ngIf="dislike"
-      />
+    <div class="w-full h-full flex items-center justify-center absolute" *ngIf="like || superLike || dislike">
+      <img class="rounded-xl object-fill h-30 w-30" src="assets/images/like.gif" alt="like" *ngIf="like" />
+      <img class="rounded-xl object-fill h-30 w-30" src="assets/images/star.gif" alt="superLike" *ngIf="superLike" />
+      <img class="rounded-xl object-fill h-30 w-30" src="assets/images/dislike.gif" alt="lady" *ngIf="dislike" />
     </div>
-    <div class="mb-3 p-3 space-y-2 w-full capitalize">
-      <h3 class="flex items-center space-x-2">
-        <span class="w-10 h-10 bg-black rounded-full">
-          <img
-            class="rounded-full object-cover h-full w-full"
-            src="{{ currentUserProfileDisplayed.avatar }}"
-            alt="{{ currentUserProfileDisplayed.name }}"
-          />
+    <div class="mb-3 p-3 space-y-2 w-full">
+      <div class="flex items-end space-x-2">
+        <span class="text-4xl font-semibold">{{
+          currentUserProfileDisplayed.firstname
+          }}</span>
+        <span class="text-2xl text-gray-300" *ngIf="currentUserProfileDisplayed.age">{{ currentUserProfileDisplayed.age
+          }}
         </span>
-        <span class="text-xl font-semibold">{{
-          currentUserProfileDisplayed.name
-        }}</span>
-        <span
-          class="text-base text-gray-300"
-          *ngIf="currentUserProfileDisplayed.numLikes > 0"
-          >{{ currentUserProfileDisplayed.numLikes }}
-          <i class="fa-solid fa-heart text-red-500"></i
-        ></span>
-        <span
-          class="text-base text-gray-300"
-          *ngIf="currentUserProfileDisplayed.numSuperLikes > 0"
-          >{{ currentUserProfileDisplayed.numSuperLikes }}
-          <i class="fa-solid fa-star text-yellow-500"></i
-        ></span>
-        <span
-          class="text-base text-gray-300"
-          *ngIf="currentUserProfileDisplayed.numDislikes > 0"
-          >{{ currentUserProfileDisplayed.numDislikes }}
-          <i class="fa-solid fa-thumbs-down text-blue-500"></i
-        ></span>
-      </h3>
-      <p class="text-gray-300 text-lg normal-case">
-        <i class="fa-solid fa-briefcase"></i>
-        {{ currentUserProfileDisplayed.profession }}
-      </p>
-      <p class="text-gray-300 text-lg">
-        <i class="fa-solid fa-location-dot"></i>
-        {{ currentUserProfileDisplayed.location }}
-      </p>
+      </div>
+      <div class="max-h-[120px] overflow-hidden">
+        <div *ngIf="currentUserImageIndex === 0">
+          <p class="text-gray-300 text-lg normal-case" *ngIf="currentUserProfileDisplayed.profession">
+            <i class="fa-solid fa-briefcase"></i>
+            {{ currentUserProfileDisplayed.profession }}
+          </p>
+          <p class="text-gray-300 text-lg" *ngIf="currentUserProfileDisplayed.location">
+            <i class="fa-solid fa-location-dot"></i>
+            {{ currentUserProfileDisplayed.location }}
+          </p>
+        </div>
+        <div *ngIf="(currentUserImageIndex === 1) && currentUserProfileDisplayed.about">
+          <p class="text-gray-300 text-sm  overflow-hidden text-ellipsis" *ngIf="currentUserProfileDisplayed.about">
+            {{ currentUserProfileDisplayed.about }}
+          </p>
+        </div>
+        <div class="flex w-full flex-wrap justify-start gap-3"
+          *ngIf="((currentUserImageIndex > 0 && currentUserProfileDisplayed.about ==='') || currentUserImageIndex > 1) || (currentUserProfileDisplayed.interests.length > 0 && currentUserImageIndex == 2) || (currentUserImageIndex > 2 && currentUserProfileDisplayed.lifestyle.length > 0)">
+          <span class="bg-black bg-opacity-40 px-5 py-2 rounded-3xl"
+            *ngFor="let int of currentUserProfileDisplayed.interests">{{int}}</span>
+        </div>
+        <!-- <div class="flex w-full flex-wrap justify-start gap-3"
+          *ngIf="currentUserProfileDisplayed.lifestyle.length > 0 && ((currentUserImageIndex > 0 && currentUserProfileDisplayed.about ==='')|| currentUserImageIndex > 1) && currentUserProfileDisplayed.interests.length == 0">
+          <span class="bg-black bg-opacity-40 px-5 py-2 rounded-3xl"
+            *ngFor="let int of currentUserProfileDisplayed.lifestyle">{{int}}</span>
+        </div> -->
+
+      </div>
     </div>
 
     <ng-container *ngIf="showActionBar">
       <div class="mb-2 p-4 w-full flex items-center justify-center space-x-10">
         <button
           class="rounded-xl px-3 py-2 bg-gray-100 text-red-500 hover:bg-red-500 hover:text-red-100 focus:bg-red-500 focus:text-red-100 transform active:scale-75 transition-transform"
-          (click)="updateUserProfileLike(); $event.stopPropagation()"
-        >
+          (click)="updateUserProfileLike(); $event.stopPropagation()">
           <i class="fa-solid fa-heart text-2xl"></i>
         </button>
         <button
           class="rounded-xl px-3 py-2 bg-gray-100 text-yellow-500 hover:bg-yellow-500 hover:text-yellow-100 focus:bg-yellow-500 focus:text-yellow-100 transform active:scale-75 transition-transform"
-          (click)="updateUserProfileSuperLike(); $event.stopPropagation()"
-        >
+          (click)="updateUserProfileSuperLike(); $event.stopPropagation()">
           <i class="fa-solid fa-star text-2xl"></i>
         </button>
         <button
           class="rounded-xl px-3 py-2 bg-gray-100 text-blue-500 hover:bg-blue-500 hover:text-blue-100 focus:bg-blue-500 focus:text-blue-100 transform active:scale-75 transition-transform"
-          (click)="updateUserProfileDislike(); $event.stopPropagation()"
-        >
+          (click)="updateUserProfileDislike(); $event.stopPropagation()">
           <i class="fa-solid fa-thumbs-down text-2xl"></i>
         </button>
       </div>
