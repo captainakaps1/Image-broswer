@@ -840,4 +840,151 @@ export const userProfiles: UserProfile[] = [
       },
     ],
   },
+  {
+    id: '18',
+    avatar:
+      'https://images.unsplash.com/photo-1571513722275-4b41940f54b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8N3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+    firstname: 'Aiony',
+    lastname: 'Haust',
+    about:
+      "I'm a big fan of live music and enjoy going to concerts and music festivals.",
+    profession: 'Model',
+    location: 'Kazakhstan/Astana',
+    lifestyle: ['Meditation', 'Sustainability', 'Fitness'],
+    interests: ['Traveling'],
+    age: 25,
+    numLikes: 0,
+    numSuperLikes: 0,
+    numDislikes: 0,
+    images: [
+      {
+        id: 1,
+        imageUrl:
+          'https://images.unsplash.com/photo-1571513722275-4b41940f54b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8N3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 2,
+        imageUrl:
+          'https://images.unsplash.com/photo-1548361403-cb0c785eea54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 3,
+        imageUrl:
+          'https://images.unsplash.com/photo-1571513721963-d855fd8df4c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 4,
+        imageUrl:
+          'https://images.unsplash.com/photo-1571513721963-d855fd8df4c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 5,
+        imageUrl:
+          'https://images.unsplash.com/photo-1584646835133-9c3e5e1a9523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+    ],
+  },
+  {
+    id: '19',
+    avatar:
+      'https://images.unsplash.com/photo-1579861710061-8de008e7cc39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    firstname: 'John',
+    lastname: 'Haust',
+    about:
+      "I'm a fun-loving and adventurous guy who loves to explore new places and try new things. Whether it's hiking a new trail or checking out the latest art exhibit, I'm always up for an adventure. In my free time, you can find me playing guitar or watching a good movie",
+    profession: 'Model',
+    location: 'Kazakhstan/Astana',
+    lifestyle: ['Meditation', 'Sustainability', 'Fitness'],
+    interests: ['Music', 'Movies'],
+    age: 25,
+    numLikes: 0,
+    numSuperLikes: 0,
+    numDislikes: 0,
+    images: [
+      {
+        id: 1,
+        imageUrl:
+          'https://images.unsplash.com/photo-1503341504253-dff4815485f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 2,
+        imageUrl:
+          'https://images.unsplash.com/photo-1503341338985-c0477be52513?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 3,
+        imageUrl:
+          'https://images.unsplash.com/photo-1503341543961-ce80b820edce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 4,
+        imageUrl:
+          'https://images.unsplash.com/photo-1502597375253-8082466db996?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 5,
+        imageUrl:
+          'https://images.unsplash.com/photo-1502389614483-e475fc34407e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+    ],
+  },
+  {
+    id: '20',
+    avatar:
+      'https://images.unsplash.com/photo-1503341504253-dff4815485f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    firstname: 'Samantha',
+    lastname: 'Haust',
+    about:
+      "I'm a creative and artistic person who loves to express myself through my work. When I'm not designing, you can find me exploring the city or trying out a new recipe in the kitchen.",
+    profession: 'Model',
+    location: 'Los Angeles, CA',
+    lifestyle: ['Meditation', 'Sustainability', 'Fitness'],
+    interests: ['Design', 'Cooking'],
+    age: 27,
+    numLikes: 0,
+    numSuperLikes: 0,
+    numDislikes: 0,
+    images: [
+      {
+        id: 1,
+        imageUrl:
+          'https://images.unsplash.com/photo-1579861710061-8de008e7cc39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 2,
+        imageUrl:
+          'https://images.unsplash.com/photo-1579861539069-9e4f92d62a51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 3,
+        imageUrl:
+          'https://images.unsplash.com/photo-1579861424246-f6e694054c0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 4,
+        imageUrl:
+          'https://images.unsplash.com/photo-1579861524972-c404f9f47aa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+      {
+        id: 5,
+        imageUrl:
+          'https://images.unsplash.com/photo-1579861463204-a5d304294d86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        name: '',
+      },
+    ],
+  },
 ];

@@ -45,7 +45,7 @@ export class ImageBroswerCardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentUserProfileDisplayed = this.userProfile[0];
-    this.slideShowImages();
+    // this.slideShowImages();
   }
 
   slideShowImages() {
